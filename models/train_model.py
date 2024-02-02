@@ -9,9 +9,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 import joblib
 
-def setup_logging():
-    log_file_path = 'models/logs/train_model.log'
-    logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+log_file_path = 'models/logs/train_model.log'
+logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 
 def get_db_connection(db_path):
@@ -102,7 +102,6 @@ def load_model(model_path):
     return joblib.load(model_path)
 
 def main():
-    setup_logging()
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)

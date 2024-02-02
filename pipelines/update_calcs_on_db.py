@@ -3,9 +3,8 @@ import logging
 from datetime import datetime
 import os
 
-def setup_logging():
-    log_file_path = 'pipelines/logs/update_calcs_on_db.log'
-    logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+log_file_path = 'pipelines/logs/update_calcs_on_db.log'
+logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def get_db_connection(db_path):
     return sqlite3.connect(db_path)
@@ -404,7 +403,6 @@ def calculate_efficiency_and_control_rate(cursor):
         raise
 
 def main():
-    setup_logging()
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)

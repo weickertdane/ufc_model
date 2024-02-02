@@ -11,9 +11,9 @@ import logging
 from datetime import datetime
 import os
 
-def setup_logging():
-    log_file_path = 'pipelines/logs/upcoming_bout_calc.log'
-    logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+log_file_path = 'pipelines/logs/upcoming_bout_calc.log'
+logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 def get_db_connection(db_path):
     return sqlite3.connect(db_path)
@@ -463,7 +463,6 @@ def get_upcoming_bouts(cursor):
 
 
 def main():
-    setup_logging()
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)
     db_path = os.path.join(parent_dir, 'database/historical_raw.db')

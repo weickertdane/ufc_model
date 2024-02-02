@@ -10,11 +10,10 @@ from email.message import EmailMessage
 import io
 import os
 
+log_file_path = 'models/logs/create_projections.log'
+logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def setup_logging():
-    log_file_path = 'models/logs/create_projections.log'
-    logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def get_db_connection(db_path):
     return sqlite3.connect(db_path)
@@ -82,7 +81,6 @@ def make_projections(model_data, encoder, model):
 
 
 def main():
-    setup_logging()
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)

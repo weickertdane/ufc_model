@@ -1,3 +1,7 @@
 *.log
+*.joblib
+*.db
+*.csv
 *.pyc
 .DS_Store
+*.ipynb
