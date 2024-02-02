@@ -1,0 +1,10 @@
+2024-01-22 13:49:58,723 - INFO - Connected to database
+2024-01-22 13:49:58,733 - INFO - Retrieved 7476 rows of data
+2024-01-22 13:49:58,740 - INFO - Inserted 7476 rows of data into training_data
+2024-01-22 13:49:58,743 - INFO - Cleaned training_data table
+2024-01-22 13:49:58,745 - INFO - Committed changes to database
+2024-01-22 14:33:46,849 - INFO - Connected to database
+2024-01-22 14:33:46,858 - INFO - Retrieved 7476 rows of data
+2024-01-22 14:33:46,864 - INFO - Inserted 7476 rows of data into training_data
+2024-01-22 14:33:46,867 - INFO - Cleaned training_data table
+2024-01-22 14:33:46,868 - INFO - Committed changes to database

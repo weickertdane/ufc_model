@@ -1,0 +1,33 @@
+2024-01-22 13:51:10,424 - INFO - Connected to database
+2024-01-22 13:51:10,429 - INFO - DataFrame shape: (4548, 6)
+2024-01-22 13:51:10,433 - INFO - DataFrame sample:    weight_class cage_size  fighter_a_age_diff  fighter_a_eff_diff  fighter_a_control_rate_diff fighter_a_result
+0   Lightweight       big               -8.69           -0.283075                    -0.138814                W
+1  Middleweight       big               -1.02            1.177152                    -0.130052                L
+2   Lightweight       big                7.43           -0.502904                     0.037202                L
+3  Welterweight       big               -1.09           -0.194336                     0.308546                W
+4  Bantamweight       big                0.48            2.286273                    -0.111021                L
+2024-01-22 13:51:10,435 - INFO - Encoded DataFrame shape: (4548, 14)
+2024-01-22 13:51:10,441 - INFO - Encoded DataFrame sample:    weight_class_Bantamweight  weight_class_Featherweight  weight_class_Flyweight  ...  weight_class_Women's Strawweight  cage_size_big  cage_size_small
+0                        0.0                         0.0                     0.0  ...                               0.0            1.0              0.0
+1                        0.0                         0.0                     0.0  ...                               0.0            1.0              0.0
+2                        0.0                         0.0                     0.0  ...                               0.0            1.0              0.0
+3                        0.0                         0.0                     0.0  ...                               0.0            1.0              0.0
+4                        1.0                         0.0                     0.0  ...                               0.0            1.0              0.0
+
+[5 rows x 14 columns]
+2024-01-22 13:51:10,442 - INFO - NaN count in 'fighter_a_result' before dropping: 0
+2024-01-22 13:51:10,443 - INFO - NaN count in 'fighter_a_result' after dropping: 0
+2024-01-22 13:51:10,444 - INFO - X_train: ['fighter_a_age_diff', 'fighter_a_eff_diff', 'fighter_a_control_rate_diff', 'weight_class_Bantamweight', 'weight_class_Featherweight', 'weight_class_Flyweight', 'weight_class_Heavyweight', 'weight_class_Light Heavyweight', 'weight_class_Lightweight', 'weight_class_Middleweight', 'weight_class_Welterweight', "weight_class_Women's Bantamweight", "weight_class_Women's Featherweight", "weight_class_Women's Flyweight", "weight_class_Women's Strawweight", 'cage_size_big', 'cage_size_small']
+2024-01-22 13:51:10,752 - INFO - Model saved to /Users/daneweickert/Library/CloudStorage/GoogleDrive-weickertdane99@gmail.com/My Drive/Work/Sports Betting/Sports/MMA/ufc_modeling/prod/models/rf_win_prob_model.joblib
+2024-01-22 13:51:10,768 - INFO - Accuracy: 0.5538461538461539
+2024-01-22 13:51:10,768 - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.47      0.42      0.45       385
+           1       0.61      0.65      0.63       525
+
+    accuracy                           0.55       910
+   macro avg       0.54      0.54      0.54       910
+weighted avg       0.55      0.55      0.55       910
+
+2024-01-22 14:33:48,824 - INFO - Connected to database

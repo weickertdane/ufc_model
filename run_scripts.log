@@ -1,0 +1,27 @@
+2024-01-22 14:31:25,693 - INFO - Running pipelines/add_recent_bouts_to_raw_db.py
+2024-01-22 14:31:25,698 - ERROR - Error running script: [Errno 2] No such file or directory: 'python'
+Traceback (most recent call last):
+  File "/Users/daneweickert/Library/CloudStorage/GoogleDrive-weickertdane99@gmail.com/My Drive/Work/Sports Betting/Sports/MMA/ufc_modeling/prod/run_scripts.py", line 20, in <module>
+    subprocess.call(["python", script])
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/subprocess.py", line 1024, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/subprocess.py", line 1901, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'python'
+2024-01-22 14:32:07,703 - INFO - Running pipelines/add_recent_bouts_to_raw_db.py
+2024-01-22 14:32:11,014 - INFO - Finished running pipelines/add_recent_bouts_to_raw_db.py
+2024-01-22 14:32:11,014 - INFO - Running pipelines/update_calcs_on_db.py
+2024-01-22 14:33:46,809 - INFO - Finished running pipelines/update_calcs_on_db.py
+2024-01-22 14:33:46,809 - INFO - Running pipelines/get_training_data.py
+2024-01-22 14:33:46,871 - INFO - Finished running pipelines/get_training_data.py
+2024-01-22 14:33:46,872 - INFO - Running models/train_model.py
+2024-01-22 14:33:48,905 - INFO - Finished running models/train_model.py
+2024-01-22 14:33:48,905 - INFO - Running pipelines/add_upcoming_bouts_to_table.py
+2024-01-22 14:33:50,110 - INFO - Finished running pipelines/add_upcoming_bouts_to_table.py
+2024-01-22 14:33:50,110 - INFO - Running pipelines/add_calcs_to_upcoming_bouts.py
+2024-01-22 14:35:25,476 - INFO - Finished running pipelines/add_calcs_to_upcoming_bouts.py
+2024-01-22 14:35:25,476 - INFO - Running models/create_projections.py
+2024-01-22 14:35:27,385 - INFO - Finished running models/create_projections.py
