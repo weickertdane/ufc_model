@@ -18,8 +18,9 @@ logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctim
 def get_db_connection(db_path):
     return sqlite3.connect(db_path)
 
-def get_upcoming_bouts(cursor):
-    cursor.execute("""
+
+def get_upcoming_bouts(conn):
+    query = """
         SELECT 
             date,
             fighter_a_name,
@@ -30,26 +31,22 @@ def get_upcoming_bouts(cursor):
             fighter_a_eff_diff,
             fighter_a_control_rate_diff
         FROM upcoming_bouts_for_model
-    """)
-    model_data = cursor.fetchall()
-    columns = ['date', 'fighter_a_name', 'fighter_b_name', 'weight_class', 'cage_size', 'fighter_a_age_diff', 'fighter_a_eff_diff', 'fighter_a_control_rate_diff']
-    return pd.DataFrame(model_data, columns=columns)
-
-def handle_missing_values(model_data):
-    avg_values = model_data.groupby('weight_class').mean(numeric_only=True)
+    """
+    return pd.read_sql_query(query, conn)
 
 
-    for index, bout in model_data.iterrows():
-        weight_class = bout['weight_class']
-        for col in ['fighter_a_age_diff', 'fighter_a_eff_diff', 'fighter_a_control_rate_diff']:
-            if pd.isna(bout[col]) or bout[col] == 0:
-                model_data.at[index, col] = avg_values.at[weight_class, col]
+def insert_weight_class_averages(model_data):
+
+    # Fill missing numeric values with the average of the weight class
+    avg_values = model_data.groupby('weight_class').transform('mean')
+    cols_to_replace = ['fighter_a_age_diff', 'fighter_a_eff_diff', 'fighter_a_control_rate_diff']
+    model_data[cols_to_replace] = model_data[cols_to_replace].fillna(avg_values[cols_to_replace])
     return model_data
 
   
 
 def make_projections(model_data, encoder, model):
-    model_data = handle_missing_values(model_data)
+    model_data = insert_weight_class_averages(model_data)
 
     # Apply One Hot Encoding to the categorical variables
     encoded_categories = encoder.transform(model_data[['weight_class', 'cage_size']]).toarray()
@@ -89,8 +86,7 @@ def main():
     model_path = os.path.join(parent_dir, 'models/rf_win_prob_model.joblib')
     try:
         conn = get_db_connection(db_path)
-        cursor = conn.cursor()
-        model_data = get_upcoming_bouts(cursor)
+        model_data = get_upcoming_bouts(conn)
 
         # Load the Saved Encoder
         encoder_path = os.path.join(parent_dir, 'models/encoder.joblib')
