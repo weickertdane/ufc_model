@@ -43,38 +43,43 @@ def insert_weight_class_averages(model_data):
     model_data[cols_to_replace] = model_data[cols_to_replace].fillna(avg_values[cols_to_replace])
     return model_data
 
-  
-
-def make_projections(model_data, encoder, model):
+def gather_model_inputs(model_data, encoder):
     model_data = insert_weight_class_averages(model_data)
 
     # Apply One Hot Encoding to the categorical variables
     encoded_categories = encoder.transform(model_data[['weight_class', 'cage_size']]).toarray()
     encoded_df = pd.DataFrame(encoded_categories, columns=encoder.get_feature_names_out(['weight_class', 'cage_size']))
 
-    # Drop original 'weight_class' and 'cage_size' columns from model_data
-    model_data.drop(['weight_class', 'cage_size'], axis=1, inplace=True)
+    # Concatenate the DataFrame with encoded categorical and numerical features
+    model_data = pd.concat([model_data.drop(['weight_class', 'cage_size'], axis=1), encoded_df], axis=1)
 
-    # Concatenate original model_data with the encoded DataFrame
-    model_data = pd.concat([model_data, encoded_df], axis=1)
+    # Ensure we select only the features the model was trained on for prediction
+    features_for_prediction = model_data[['fighter_a_age_diff', 'fighter_a_eff_diff', 'fighter_a_control_rate_diff', 
+                                          'weight_class_Bantamweight', 'weight_class_Featherweight', 'weight_class_Flyweight', 
+                                          'weight_class_Heavyweight', 'weight_class_Light Heavyweight', 'weight_class_Lightweight', 
+                                          'weight_class_Middleweight', 'weight_class_Welterweight', "weight_class_Women's Bantamweight", 
+                                          "weight_class_Women's Featherweight", "weight_class_Women's Flyweight", 
+                                          "weight_class_Women's Strawweight", 'cage_size_big', 'cage_size_small']]
+    return features_for_prediction
 
-    logging.info(f"Model data head: {model_data.head()}")
+def make_projections(model_data, model, features_for_prediction):
+    # Predict probabilities
+    predictions = model.predict_proba(features_for_prediction)
 
-    for index, bout in model_data.iterrows():
-        # Select the relevant features for prediction
-        features = bout.drop(['date', 'fighter_a_name', 'fighter_b_name']).values.reshape(1, -1)
+    model_data['fighter_a_win_probability'] = predictions[:, 1].round(1)
+    model_data['fighter_b_win_probability'] = 1 - model_data['fighter_a_win_probability']
 
-        # Log the 15 feature headers before prediction
-        logging.info(f"Feature headers: {list(model_data.drop(['date', 'fighter_a_name', 'fighter_b_name'], axis=1).columns)}")
+    # Now round both probabilities after all calculations are done
+    model_data['fighter_a_win_probability'] = model_data['fighter_a_win_probability'].round(1)
+    model_data['fighter_b_win_probability'] = model_data['fighter_b_win_probability'].round(1)
 
-        logging.info(f"Features for prediction: {list(features[0])}")
+    #round 'fighter_a_age_diff'
+    model_data['fighter_a_age_diff'] = model_data['fighter_a_age_diff'].round(1)
 
-        fighter_a_win_probability = round(model.predict_proba(features)[:, 1][0], 3)
-        model_data.at[index, 'fighter_a_win_probability'] = fighter_a_win_probability
-        model_data.at[index, 'fighter_b_win_probability'] = 1 - fighter_a_win_probability
+    #order model data by date descending
+    model_data = model_data.sort_values(by='date', ascending=True)
 
     return model_data
-
 
 
 def main():
@@ -95,7 +100,11 @@ def main():
         # Load the model
         model = joblib.load(model_path)
 
-        model_data = make_projections(model_data, encoder, model)
+        # Gather model inputs
+        features_for_prediction = gather_model_inputs(model_data, encoder)
+
+        # Make projections
+        model_data = make_projections(model_data, model, features_for_prediction)
         logging.info(f"Model data head: {model_data.head()}")
 
         # Get today's date in YYYY-MM-DD format

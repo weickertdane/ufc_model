@@ -1,0 +1,5 @@
+#training features
+['fighter_a_age_diff', 'fighter_a_eff_diff', 'fighter_a_control_rate_diff', 'weight_class_Bantamweight', 'weight_class_Featherweight', 'weight_class_Flyweight', 'weight_class_Heavyweight', 'weight_class_Light Heavyweight', 'weight_class_Lightweight', 'weight_class_Middleweight', 'weight_class_Welterweight', "weight_class_Women's Bantamweight", "weight_class_Women's Featherweight", "weight_class_Women's Flyweight", "weight_class_Women's Strawweight", 'cage_size_big', 'cage_size_small']
+
+#projection features
+['fighter_a_age_diff', 'fighter_a_eff_diff', 'fighter_a_control_rate_diff', 'weight_class_Bantamweight', 'weight_class_Featherweight', 'weight_class_Flyweight', 'weight_class_Heavyweight', 'weight_class_Light Heavyweight', 'weight_class_Lightweight', 'weight_class_Middleweight', 'weight_class_Welterweight', "weight_class_Women's Bantamweight", "weight_class_Women's Featherweight", "weight_class_Women's Flyweight", "weight_class_Women's Strawweight", 'cage_size_big', 'cage_size_small', 'fighter_a_win_probability', 'fighter_b_win_probability']

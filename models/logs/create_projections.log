@@ -829,3 +829,76 @@ TypeError: set_text_content() got an unexpected keyword argument 'maintype'
 4  04-13-2024       Bo Nickal      Cody Brundage               -1.66  ...            1.0              0.0                       0.51                       0.49
 
 [5 rows x 22 columns]
+2024-02-03 10:24:08,864 - INFO - Model data head:          date  fighter_a_name     fighter_b_name  fighter_a_age_diff  ...  cage_size_big  cage_size_small  fighter_a_win_probability  fighter_b_win_probability
+0  04-13-2024  Justin Gaethje       Max Holloway                3.05  ...            1.0              0.0                       0.42                       0.58
+1  04-13-2024     Zhang Weili        Yan Xiaonan               -0.16  ...            1.0              0.0                       0.43                       0.57
+2  04-13-2024  Jiri Prochazka   Aleksandar Rakic               -0.68  ...            1.0              0.0                       0.49                       0.51
+3  04-13-2024   Calvin Kattar  Aljamain Sterling                1.35  ...            1.0              0.0                       0.42                       0.58
+4  04-13-2024       Bo Nickal      Cody Brundage               -1.66  ...            1.0              0.0                       0.51                       0.49
+
+[5 rows x 22 columns]
+2024-02-03 10:25:03,628 - INFO - Model data head:          date  fighter_a_name     fighter_b_name  fighter_a_age_diff  ...  cage_size_big  cage_size_small  fighter_a_win_probability  fighter_b_win_probability
+0  04-13-2024  Justin Gaethje       Max Holloway                3.05  ...            1.0              0.0                       0.42                       0.58
+1  04-13-2024     Zhang Weili        Yan Xiaonan               -0.16  ...            1.0              0.0                       0.43                       0.57
+2  04-13-2024  Jiri Prochazka   Aleksandar Rakic               -0.68  ...            1.0              0.0                       0.49                       0.51
+3  04-13-2024   Calvin Kattar  Aljamain Sterling                1.35  ...            1.0              0.0                       0.42                       0.58
+4  04-13-2024       Bo Nickal      Cody Brundage               -1.66  ...            1.0              0.0                       0.51                       0.49
+
+[5 rows x 22 columns]
+2024-02-03 10:28:33,061 - ERROR - An error occurred
+Traceback (most recent call last):
+  File "/Users/daneweickert/Library/CloudStorage/GoogleDrive-weickertdane99@gmail.com/My Drive/Work/Sports Betting/Sports/MMA/ufc_modeling/ufc_model/models/create_projections.py", line 92, in main
+    model_data = make_projections(model_data, encoder, model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/daneweickert/Library/CloudStorage/GoogleDrive-weickertdane99@gmail.com/My Drive/Work/Sports Betting/Sports/MMA/ufc_modeling/ufc_model/models/create_projections.py", line 67, in make_projections
+    predictions = model.predict_proba(features_for_prediction)
+                  ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OneHotEncoder' object has no attribute 'predict_proba'
+2024-02-03 10:31:08,361 - INFO - Model data head:          date  fighter_a_name     fighter_b_name         weight_class  ... fighter_a_eff_diff  fighter_a_control_rate_diff  fighter_a_win_probability  fighter_b_win_probability
+0  04-13-2024  Justin Gaethje       Max Holloway          Lightweight  ...              -1.86                         0.04                       0.42                       0.58
+1  04-13-2024     Zhang Weili        Yan Xiaonan  Women's Strawweight  ...               0.20                         0.33                       0.43                       0.57
+2  04-13-2024  Jiri Prochazka   Aleksandar Rakic    Light Heavyweight  ...              -0.75                        -0.39                       0.49                       0.51
+3  04-13-2024   Calvin Kattar  Aljamain Sterling        Featherweight  ...              -1.39                        -0.10                       0.42                       0.58
+4  04-13-2024       Bo Nickal      Cody Brundage         Middleweight  ...               2.24                         1.11                       0.51                       0.49
+
+[5 rows x 10 columns]
+2024-02-03 10:33:01,688 - INFO - Model data head:          date  fighter_a_name     fighter_b_name         weight_class  ... fighter_a_eff_diff  fighter_a_control_rate_diff  fighter_a_win_probability  fighter_b_win_probability
+0  04-13-2024  Justin Gaethje       Max Holloway          Lightweight  ...              -1.86                         0.04                       0.42                       0.58
+1  04-13-2024     Zhang Weili        Yan Xiaonan  Women's Strawweight  ...               0.20                         0.33                       0.43                       0.57
+2  04-13-2024  Jiri Prochazka   Aleksandar Rakic    Light Heavyweight  ...              -0.75                        -0.39                       0.49                       0.51
+3  04-13-2024   Calvin Kattar  Aljamain Sterling        Featherweight  ...              -1.39                        -0.10                       0.42                       0.58
+4  04-13-2024       Bo Nickal      Cody Brundage         Middleweight  ...               2.24                         1.11                       0.51                       0.49
+
+[5 rows x 10 columns]
+2024-02-03 10:35:03,565 - INFO - Model data head:           date   fighter_a_name   fighter_b_name       weight_class  ... fighter_a_eff_diff  fighter_a_control_rate_diff  fighter_a_win_probability  fighter_b_win_probability
+74  02-03-2024  Thomas Petersen     Jamal Pogues        Heavyweight  ...               0.17                        -0.20                        0.6                        0.4
+73  02-03-2024  Landon Quinones  Marquel Mederos        Lightweight  ...              -2.33                         0.02                        0.4                        0.6
+63  02-03-2024   Renato Moicano       Drew Dober        Lightweight  ...               0.82                         0.05                        0.8                        0.2
+64  02-03-2024      Randy Brown  Muslim Salikhov       Welterweight  ...               0.95                        -0.05                        0.8                        0.2
+65  02-03-2024   Viviane Araujo    Natalia Silva  Women's Flyweight  ...              -2.22                         0.21                        0.3                        0.7
+
+[5 rows x 10 columns]
+2024-02-03 10:37:07,431 - INFO - Model data head:           date   fighter_a_name   fighter_b_name       weight_class  ... fighter_a_eff_diff  fighter_a_control_rate_diff  fighter_a_win_probability  fighter_b_win_probability
+74  02-03-2024  Thomas Petersen     Jamal Pogues        Heavyweight  ...               0.17                        -0.20                        0.6                        0.4
+73  02-03-2024  Landon Quinones  Marquel Mederos        Lightweight  ...              -2.33                         0.02                        0.4                        0.6
+63  02-03-2024   Renato Moicano       Drew Dober        Lightweight  ...               0.82                         0.05                        0.8                        0.2
+64  02-03-2024      Randy Brown  Muslim Salikhov       Welterweight  ...               0.95                        -0.05                        0.8                        0.2
+65  02-03-2024   Viviane Araujo    Natalia Silva  Women's Flyweight  ...              -2.22                         0.21                        0.3                        0.7
+
+[5 rows x 10 columns]
+2024-02-03 10:37:25,721 - INFO - Model data head:           date   fighter_a_name   fighter_b_name       weight_class  ... fighter_a_eff_diff  fighter_a_control_rate_diff  fighter_a_win_probability  fighter_b_win_probability
+74  02-03-2024  Thomas Petersen     Jamal Pogues        Heavyweight  ...               0.17                        -0.20                        0.6                        0.4
+73  02-03-2024  Landon Quinones  Marquel Mederos        Lightweight  ...              -2.33                         0.02                        0.4                        0.6
+63  02-03-2024   Renato Moicano       Drew Dober        Lightweight  ...               0.82                         0.05                        0.8                        0.2
+64  02-03-2024      Randy Brown  Muslim Salikhov       Welterweight  ...               0.95                        -0.05                        0.8                        0.2
+65  02-03-2024   Viviane Araujo    Natalia Silva  Women's Flyweight  ...              -2.22                         0.21                        0.3                        0.7
+
+[5 rows x 10 columns]
+2024-02-03 10:38:03,938 - INFO - Model data head:           date   fighter_a_name   fighter_b_name       weight_class  ... fighter_a_eff_diff  fighter_a_control_rate_diff  fighter_a_win_probability  fighter_b_win_probability
+74  02-03-2024  Thomas Petersen     Jamal Pogues        Heavyweight  ...               0.17                        -0.20                        0.6                        0.4
+73  02-03-2024  Landon Quinones  Marquel Mederos        Lightweight  ...              -2.33                         0.02                        0.4                        0.6
+63  02-03-2024   Renato Moicano       Drew Dober        Lightweight  ...               0.82                         0.05                        0.8                        0.2
+64  02-03-2024      Randy Brown  Muslim Salikhov       Welterweight  ...               0.95                        -0.05                        0.8                        0.2
+65  02-03-2024   Viviane Araujo    Natalia Silva  Women's Flyweight  ...              -2.22                         0.21                        0.3                        0.7
+
+[5 rows x 10 columns]
