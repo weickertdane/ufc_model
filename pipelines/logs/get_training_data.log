@@ -8,3 +8,8 @@
 2024-01-22 14:33:46,864 - INFO - Inserted 7476 rows of data into training_data
 2024-01-22 14:33:46,867 - INFO - Cleaned training_data table
 2024-01-22 14:33:46,868 - INFO - Committed changes to database
+2024-02-03 14:12:24,932 - INFO - Connected to database
+2024-02-03 14:12:24,958 - INFO - Retrieved 4428 rows of data
+2024-02-03 14:12:24,964 - INFO - Inserted 4428 rows of data into training_data
+2024-02-03 14:12:24,974 - INFO - Cleaned training_data table
+2024-02-03 14:12:24,979 - INFO - Committed changes to database

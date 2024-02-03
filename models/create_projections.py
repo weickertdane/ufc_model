@@ -66,15 +66,15 @@ def make_projections(model_data, model, features_for_prediction):
     # Predict probabilities
     predictions = model.predict_proba(features_for_prediction)
 
-    model_data['fighter_a_win_probability'] = predictions[:, 1].round(1)
+    model_data['fighter_a_win_probability'] = predictions[:, 1].round(2)
     model_data['fighter_b_win_probability'] = 1 - model_data['fighter_a_win_probability']
 
     # Now round both probabilities after all calculations are done
-    model_data['fighter_a_win_probability'] = model_data['fighter_a_win_probability'].round(1)
-    model_data['fighter_b_win_probability'] = model_data['fighter_b_win_probability'].round(1)
+    model_data['fighter_a_win_probability'] = model_data['fighter_a_win_probability'].round(2)
+    model_data['fighter_b_win_probability'] = model_data['fighter_b_win_probability'].round(2)
 
     #round 'fighter_a_age_diff'
-    model_data['fighter_a_age_diff'] = model_data['fighter_a_age_diff'].round(1)
+    model_data['fighter_a_age_diff'] = model_data['fighter_a_age_diff'].round(2)
 
     #order model data by date descending
     model_data = model_data.sort_values(by='date', ascending=True)

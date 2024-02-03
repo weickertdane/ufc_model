@@ -902,3 +902,19 @@ AttributeError: 'OneHotEncoder' object has no attribute 'predict_proba'
 65  02-03-2024   Viviane Araujo    Natalia Silva  Women's Flyweight  ...              -2.22                         0.21                        0.3                        0.7
 
 [5 rows x 10 columns]
+2024-02-03 14:13:54,453 - INFO - Model data head:           date   fighter_a_name   fighter_b_name       weight_class  ... fighter_a_eff_diff  fighter_a_control_rate_diff  fighter_a_win_probability  fighter_b_win_probability
+74  02-03-2024  Thomas Petersen     Jamal Pogues        Heavyweight  ...               0.17                        -0.20                        0.7                        0.3
+73  02-03-2024  Landon Quinones  Marquel Mederos        Lightweight  ...              -2.33                         0.02                        0.4                        0.6
+63  02-03-2024   Renato Moicano       Drew Dober        Lightweight  ...               0.82                         0.05                        0.8                        0.2
+64  02-03-2024      Randy Brown  Muslim Salikhov       Welterweight  ...               0.95                        -0.05                        0.9                        0.1
+65  02-03-2024   Viviane Araujo    Natalia Silva  Women's Flyweight  ...              -2.22                         0.21                        0.2                        0.8
+
+[5 rows x 10 columns]
+2024-02-03 14:14:49,355 - INFO - Model data head:           date   fighter_a_name   fighter_b_name       weight_class  ... fighter_a_eff_diff  fighter_a_control_rate_diff  fighter_a_win_probability  fighter_b_win_probability
+74  02-03-2024  Thomas Petersen     Jamal Pogues        Heavyweight  ...               0.17                        -0.20                       0.67                       0.33
+73  02-03-2024  Landon Quinones  Marquel Mederos        Lightweight  ...              -2.33                         0.02                       0.44                       0.56
+63  02-03-2024   Renato Moicano       Drew Dober        Lightweight  ...               0.82                         0.05                       0.75                       0.25
+64  02-03-2024      Randy Brown  Muslim Salikhov       Welterweight  ...               0.95                        -0.05                       0.92                       0.08
+65  02-03-2024   Viviane Araujo    Natalia Silva  Women's Flyweight  ...              -2.22                         0.21                       0.24                       0.76
+
+[5 rows x 10 columns]

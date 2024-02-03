@@ -113,7 +113,7 @@ def main():
         logging.info("Connected to database")
 
         # Call functions
-        df = load_and_preprocess_data(cursor)
+        df = load_and_preprocess_data(cursor, parent_dir)
         model, accuracy, report = train_model(df)
 
         # Save model
